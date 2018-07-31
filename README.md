@@ -4,7 +4,7 @@
 
 ### 关键属性
 globalCompositeOperation 实现各种抠图、遮罩必备
-toJSON（['自定义属性名']）fabric 在设置自定义属性后会丢失，利用此法可保留自定义属性，用来判断新增物体的类型效果奇佳
+toJSON（['自定义属性名']）fabric 在设置自定义属性后会丢失，利用此法可保留画板中某个物体的自定义属性，用来判断新增物体的类型效果奇佳
 
 ---
 
@@ -78,7 +78,7 @@ mouse:dblclick<br>
 
 ----------
 
-### IText的方法 ###
+### IText的方法 
 selectAll() 选择全部<br>
 getSelectedText() 获取选中的文本<br>
 exitEditing() 退出编辑模式?<br>
@@ -86,7 +86,7 @@ exitEditing() 退出编辑模式?<br>
 
 ----------
 
-### 绘制直线 ###
+### 绘制直线
 var line = new fabric.Line([10, 10, 100, 100], {<br>
   fill: 'green',<br>
   stroke: 'green',	//笔触颜色<br>
@@ -96,7 +96,7 @@ canvas.add(line);<br>
 
 ----------
 
-### 绘制虚线 ###
+### 绘制虚线
 在绘制直线的基础上添加属性strokeDashArray:Array<br>
 example：<br>
 var line = new fabric.Line([10, 10, 100, 100], {<br>
@@ -112,7 +112,7 @@ strokeDashArray[a,b] =》 每隔a个像素空b个像素。<br>
 
 ----------
 
-### 可绘制对象 ###
+### 可绘制对象
 fabric.Circle	圆<br>
 fabric.Ellipse	椭圆<br>
 fabric.Line 直线<br>
@@ -123,7 +123,7 @@ fabric.Triangle 三角形<br>
 
 ----------
 
-### 图片去掉选中边框和旋转，且只能移动，不可操作 ###
+### 图片去掉选中边框和旋转，且只能移动，不可操作
 oImg.hasControls = false; 只能移动不能（编辑）操作<br>
 oImg.hasBorders = false; 去掉边框，可以正常操作<br>
 hasRotatingPoint = false; 不能被旋转<br>

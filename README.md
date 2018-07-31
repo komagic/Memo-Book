@@ -3,8 +3,8 @@
 ### fabric.js (抠图项目)
 
 ### 关键属性
-globalCompositeOperation 实现各种抠图、遮罩必备
-toJSON（['自定义属性名']）fabric 在设置自定义属性后会丢失，利用此法可保留画板中某个物体的自定义属性，用来判断新增物体的类型效果奇佳
++ globalCompositeOperation 实现各种抠图、遮罩必备
++ toJSON（['自定义属性名']）fabric 在设置自定义属性后会丢失，利用此法可保留画板中某个物体的自定义属性，用来判断新增物体的类型效果奇佳
 
 ---
 

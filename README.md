@@ -2,6 +2,27 @@
 
 ### fabric.js (抠图项目)
 
+### fabric brush解决方案
+var canvas = new fabric.Canvas(document.getElementById('c'))
+
+canvas.freeDrawingBrush = new fabric.CrayonBrush(canvas, {
+  width: 70,
+  opacity: 0.6,
+  color: "#ff0000"
+});
+
+canvas.isDrawingMode = true
+
+canvas.on('mouse:up', function(opt) {
+  if (canvas.isDrawingMode) {
+    var c = fabric.util.copyCanvasElement(canvas.upperCanvasEl);
+    var img = new fabric.Image(c);
+    canvas.contextTopDirty = true;
+    canvas.add(img);
+    canvas.isDrawingMode = false;
+  }
+})
+
 ### 关键属性
 globalCompositeOperation 实现各种抠图、遮罩必备<br>
 toJSON（['自定义属性名']）fabric 在设置自定义属性后会丢失，利用此法可保留画板中某个物体的自定义属性，用来判断新增物体的类型效果奇佳<br>

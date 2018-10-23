@@ -3,7 +3,7 @@
 ### fabric.js (抠图项目)
 
 ### fabric brush解决方案
-、、、
+---
 var canvas = new fabric.Canvas(document.getElementById('c'))
 
 canvas.freeDrawingBrush = new fabric.CrayonBrush(canvas, {

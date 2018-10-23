@@ -1,6 +1,6 @@
 # 备忘
 
-### fabric.js (抠图项目)
+## fabric.js (抠图项目)
 
 ### fabric brush解决方案
 ---

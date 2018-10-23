@@ -4,6 +4,7 @@
 
 ### fabric brush解决方案
 ---
+```
 var canvas = new fabric.Canvas(document.getElementById('c'))
 
 canvas.freeDrawingBrush = new fabric.CrayonBrush(canvas, {
@@ -23,6 +24,7 @@ canvas.on('mouse:up', function(opt) {
     canvas.isDrawingMode = false;
   }
 })
+```
 
 ### 关键属性
 globalCompositeOperation 实现各种抠图、遮罩必备<br>

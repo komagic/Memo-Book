@@ -6,11 +6,73 @@ Vue实现了一个完整的类HTML模板的编译器，所谓编译时把一种�
 
 ### 解析
 
-解析过程涉及到一些编译原理。
+解析过程涉及到一些编译原理知识，这里不详细展开。通过对字符的移进、归约，以及正则匹配等方式将模板字符串进行解析，得到指令、class、style等结构化的数据对象，这个对象我们称之为构建中间产物。
+
+源模板结构：
+```
+<ul>
+  <li v-for="(obj, key, index) in list">
+    <span>文本</span>
+  </li>
+</ul>
+```
+
+模板解析后的中间产物结构如下：
+
+```
+{
+  type: 1,
+  tag: 'ul',
+  parent: null,
+  attrsList: [],
+  children: [
+    {
+      type: 1,
+      tag: 'li',
+      parent: ul,
+      attrsList: [],
+      for: 'list',
+      alias: 'obj',
+      iterator1: 'key',
+      iterator2: 'index'
+      children: [
+        {
+          type: 1,
+          tag: 'span',
+          parent: li,
+          attrsList: [],
+          children: [
+            {
+              type: 2,
+              tag: '',
+              parent: span,
+              attrsList: [],
+              text: '文本'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### 优化
 
-Vue会将一些不会发生变化的节点进行static标记，方便在后续Diff过程中直接跳过。
+优化是针对前一步的中间产物进行一些标记，以方便在运行阶段获取更高的性能，这里 Vue 会将一些不会发生变化的节点进行 static  标记，方便在后续 Diff 过程中直接跳过。
+
+优化后的中间产物结构：
+
+```
+{
+  type: 2,
+  tag: '',
+  parent: span,
+  attrsList: [],
+  text: '文本',
+  static: true
+}
+```
 
 ### 代码生成
 
@@ -34,9 +96,20 @@ with(this) {
 
 ## Diff算法
 
+Diff 算法是通过同层的树节点进行比较而非对树进行逐层搜索遍历的方式，所以时间复杂度只有 O(n)， 是一种相对高效的算法，如下图：
+![diff](/vue/diff.png)
+
+相同颜色的方块中的节点会进行比对，比对得到「差异」后将这些「差异」更新到 DOM 上。
 ## 响应式
 Vue内部的defineReactiv方法通过Object.defineProperty来实现对对象的”响应式“化。经过defineReactive处理以后，obj的key属性在读的时候回触发reactiveGetter方法，而在写的时候会触发reactiveSetter方法。
-
+```
+/*
+ * obj: 目标对象
+ * prop: 需要操作的目标对象的属性名 descriptor: 描述符
+ * return value 传入对象 
+*/
+Object.defineProperty(obj, prop, descriptor)
+```
 针对数组数据，Vue进行了特殊的处理，替换了数组对象的原先，劫持了一些数组方法入pop、push、slice等，对这些数组操作后的值遍历进行defineReactive的处理，以保证这些数组方法的返回值依旧是可相应的数据。
 
 在Vue的构造函数中，响应式系统处理的是data参数，代码简化如下：

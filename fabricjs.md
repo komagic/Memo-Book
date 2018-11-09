@@ -6,7 +6,6 @@
 ---
 ```
 var canvas = new fabric.Canvas(document.getElementById('c'))
-
 canvas.freeDrawingBrush = new fabric.CrayonBrush(canvas, {
   width: 70,
   opacity: 0.6,

@@ -4,7 +4,9 @@
 * [`[Basic]` Vue原理](/vue/vuejs.md)
 * [`[Basic]` React原理](/react/react.md)
   
-## fabric.js
+## canvas
+
+### fabric.js
 * [`[Basic]` fabric.js常见api](/fabricjs.md)
 
 # web常见安全问题

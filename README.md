@@ -46,7 +46,7 @@ Xss攻击过程中，cookie容易被攻击者利用。首先我们需要避免�
 4. 应用操作流程安全控制
 存在用户隐私操作时候，新增用户二次验证的流程。
 
-CSRF
+## CSRF
 跨站请求伪造（Cross site Request Forgery）,因为其触发特点又称为单键攻击或会话重置，CSRF通过挟持用户在信任站点登录状态，执行非用户本意操作。
 CSRF攻击流程如下：
 
@@ -61,10 +61,10 @@ CSRF攻击需要具备的条件：
 * 用户访问危险站点，且B存在诱导用户跳转到a站点的链接；
 * 可信任站点没有CSRF防护措施；
 
-CSRF危害
+### CSRF危害
 CSRF攻击成功后，攻击者的权限近似用户。
 
-CSRF防御
+### CSRF防御
 * refer检测
 浏览器中发起请求默认会在request Header中携带refer信息，koa中可以使用ctx.headers[‘referer’]获取请求头中的referer信息。通过过滤referer的方式来确保请求合法性。
 
@@ -86,7 +86,8 @@ mysql.query(`select title,contet from article where id = ?`, id)
 * 避免SQL异常暴露
 * 合理规划用户数据库权限
 
-DDoS
+## DDoS
 分布式拒绝服务攻击（Distributed Denial of service,DDoS）,以破坏应用“可用性”为目的，攻击者通过发送大量无用数据消耗有限的网络资源和服务器系统资源，导致其无法向正常用户提供服务。
 
+### DDos防御
 硬件性能提升、分布式应用部署、DDoS清洗等方案可提高应用对DDoS的防御能力。

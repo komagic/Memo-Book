@@ -9,6 +9,10 @@
 ### fabric.js
 * [`[Basic]` fabric.js常见api](/fabricjs.md)
 
+## 性能优化
+* [`[Basic]` web性能优化](/optimze/op.md)
+
+
 # web常见安全问题
 一个典型的web应用，通常以浏览器或客户端app作为入口，通过HTTP访问服务，客户端解析服务返回的内容展现给用户，服务本身会依赖DB及其他服务。
 

@@ -10,7 +10,7 @@
 * [`[Basic]` fabric.js常见api](/fabricjs.md)
 
 ## 性能优化
-* [`[Basic]` web性能优化](/optimze/op.md)
+* [`[Basic]` web性能优化](/optimize/op.md)
 
 
 # web常见安全问题
